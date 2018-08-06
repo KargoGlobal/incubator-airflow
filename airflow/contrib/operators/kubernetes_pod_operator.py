@@ -92,6 +92,8 @@ class KubernetesPodOperator(BaseOperator):
                 gen.add_mount(mount)
             for volume in self.volumes:
                 gen.add_volume(volume)
+            
+            print(gen._get_init_containers)
 
             pod = gen.make_pod(
                 namespace=self.namespace,
