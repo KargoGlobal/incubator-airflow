@@ -1,3 +1,5 @@
+import logging
+
 class ArionFormatter(logging.Formatter):
 
     err_fmt  = "ERROR: %(msg)s"
