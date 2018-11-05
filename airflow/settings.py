@@ -35,6 +35,7 @@ from sqlalchemy.pool import NullPool
 from airflow import configuration as conf
 from airflow.logging_config import configure_logging
 from airflow.utils.sqlalchemy import setup_event_handlers
+from airflow.utils.log import ArionFormatter
 
 log = logging.getLogger(__name__)
 
@@ -97,7 +98,8 @@ LOGGING_LEVEL = logging.INFO
 # the prefix to append to gunicorn worker processes after init
 GUNICORN_WORKER_READY_PREFIX = "[ready] "
 
-LOG_FORMAT = conf.get('core', 'log_format')
+#LOG_FORMAT = conf.get('core', 'log_format')
+LOG_FORMAT = ArionFormatter()
 SIMPLE_LOG_FORMAT = conf.get('core', 'simple_log_format')
 
 AIRFLOW_HOME = None
