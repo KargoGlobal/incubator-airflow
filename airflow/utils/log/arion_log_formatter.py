@@ -17,13 +17,13 @@ class ArionFormatter(logging.Formatter):
 
         # Replace the original format with one customized by logging level
         if record.levelno == logging.DEBUG:
-            self._style._fmt = ArionFormatter.dbg_fmt
+            self._style._fmt = self.dbg_fmt
 
         elif record.levelno == logging.INFO:
-            self._style._fmt = ArionFormatter.info_fmt
+            self._style._fmt = self.info_fmt
 
         elif record.levelno == logging.ERROR:
-            self._style._fmt = ArionFormatter.err_fmt
+            self._style._fmt = self.err_fmt
 
         # Call the original formatter class to do the grunt work
         result = logging.Formatter.format(self, record)
