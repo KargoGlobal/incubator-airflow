@@ -92,7 +92,7 @@ class PodLauncher(LoggingMixin):
                 tail_lines=10,
                 _preload_content=False)
             for line in logs:
-                self.log.info(line)
+                self.log.info(logs)
         result = None
         if self.extract_xcom:
             while self.base_container_is_running(pod):
