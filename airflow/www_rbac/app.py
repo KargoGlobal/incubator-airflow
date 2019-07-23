@@ -27,7 +27,7 @@ from flask_appbuilder import AppBuilder, SQLA
 from flask_caching import Cache
 from flask_wtf.csrf import CSRFProtect
 from six.moves.urllib.parse import urlparse
-from werkzeug.wsgi import DispatcherMiddleware
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.contrib.fixers import ProxyFix
 
 from airflow import settings
@@ -61,6 +61,7 @@ def create_app(config=None, session=None, testing=False, app_name="Airflow"):
         app.config.from_mapping(config)
 
     csrf.init_app(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = conf.get('core', 'SQL_ALCHEMY_CONN')
 
     db = SQLA(app)
 
